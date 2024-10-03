@@ -1,0 +1,5 @@
+bazel-*
+
+.DS_Store
+MODULE.bazel.lock
+.vscode
