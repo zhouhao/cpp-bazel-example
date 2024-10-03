@@ -2,6 +2,7 @@
 #include <string>
 #include <functional>
 #include <optional>
+#include "main/guess-number.h"
 
 std::function<std::string(int, int)> guess_number = [](int number, int guess) -> std::string
 {
@@ -22,10 +23,10 @@ std::optional<int> read_number(std::istream &in)
     return {};
 }
 
-void guess_number_with_clues(int number, std::function<std::string(int, int)> message_function)
+void guess_number_with_clues(int number)
 {
     std::cout << "Guess the number: \n>";
-    std::optional<int> guess;
+    std::optional<int> guess{1};
     while ((guess = read_number(std::cin)).has_value())
     {
         std::cout << "Your guess was " << guess.value() << "\n";
@@ -34,7 +35,7 @@ void guess_number_with_clues(int number, std::function<std::string(int, int)> me
             std::cout << "Well done! You guessed the number.\n";
             return;
         }
-        std::cout << message_function(number, guess.value());
+        std::cout << guess_number(number, guess.value());
         std::cout << ">";
     }
     std::cout << "The number was " << number << "\n";

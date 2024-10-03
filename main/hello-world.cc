@@ -12,6 +12,6 @@ int main(int argc, char** argv) {
   std::cout << get_greet(who) << std::endl;
   print_localtime();
 
-  guess_number_with_clues(42, guess_number);  
+  guess_number_with_clues(42);  
   return 0;
 }
