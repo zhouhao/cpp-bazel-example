@@ -4,11 +4,18 @@ cc_library(
     hdrs = ["hello-greet.h"],
 )
 
+cc_library(
+    name = "guess-number",
+    srcs = ["guess-number.cc"],
+    hdrs = ["guess-number.h"],
+)
+
 cc_binary(
     name = "hello-world",
     srcs = ["hello-world.cc"],
     deps = [
-        ":hello-greet",
-        "//lib:hello-time",
+        ":hello-greet", 
+        ":guess-number",
+        "//lib:hello-time",     
     ],
 )
