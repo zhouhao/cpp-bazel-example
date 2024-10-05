@@ -39,16 +39,35 @@ void refCopy(const MyClass& original) {
   std::cout << '\t' << sharedPtr.get()->getValue() << std::endl;
 }
 
+void reference_test() {
+      // Creating a vector
+    std::vector<int> original = {1, 2, 3, 4, 5};
+    auto copy = original;
+
+    // Assigning the vector to a reference variable
+    std::vector<int>& ref = original;
+
+    // Modifying the vector through the reference
+    ref.push_back(6);
+
+    // Both 'original' and 'ref' now contain {1, 2, 3, 4, 5, 6}
+    std::cout << "Original size: " << original.size() << std::endl;
+    std::cout << "Copy size: " << copy.size() << std::endl;
+    std::cout << "Reference size: " << ref.size() << std::endl;
+}
+
 int main() {
-  MyClass original(42);
-  std::cout << "Address of original: " << &original << std::endl;
 
-  auto sharedPtr = std::make_shared<const MyClass>(original);
-  std::cout << "Address of shared object: " << sharedPtr.get() << std::endl;
-  std::cout << "Value in shared object: " << sharedPtr->getValue() << std::endl
-            << std::endl;
+  reference_test();
+  // MyClass original(42);
+  // std::cout << "Address of original: " << &original << std::endl;
 
-  refCopy(original);
+  // auto sharedPtr = std::make_shared<const MyClass>(original);
+  // std::cout << "Address of shared object: " << sharedPtr.get() << std::endl;
+  // std::cout << "Value in shared object: " << sharedPtr->getValue() << std::endl
+  //           << std::endl;
+
+  // refCopy(original);
 
   // std::string who = "world";
   // if (argc > 1) {
